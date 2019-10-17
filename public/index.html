@@ -22,12 +22,20 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#2F3BA2" />
+  <meta name="description" content="A sample weather app">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="Weather PWA">
+  <link rel="apple-touch-icon" href="/images/icons/icon-152x152.png">
   <title>Weather PWA</title>
   <meta name="codelab" content="your-first-pwa-v3">
   <link rel="stylesheet" type="text/css" href="/styles/inline.css">
   <link rel="icon" href="/images/favicon.ico" type="image/x-icon" />
 
+
   <!-- CODELAB: Add link rel manifest -->
+  <link rel="manifest" href="./manifest.json">
   <!-- CODELAB: Add iOS meta tags and icons -->
   <!-- CODELAB: Add description here -->
   <!-- CODELAB: Add meta theme-color -->
@@ -189,7 +197,7 @@
           <option value="-64.8251018,-63.496847">Port Lockroy, Antarctica</option>
           <option value="37.757815,-122.5076401">San Francisco, USA</option>
           <option value="31.2243085,120.9162955">Shanghai, China</option>
-          <option value="35.6735408,139.5703032">Japan</option>
+          <option value="35.6735408,139.5703032">Tokyo, Japan</option>
         </select>
       </div>
       <div class="dialog-buttons">
@@ -202,8 +210,18 @@
   <script src="/scripts/luxon-1.11.4.js"></script>
   <script src="/scripts/app.js"></script>
   <!-- CODELAB: Add the install script here -->
+  <script src="/scripts/install.js"></script>
   <script>
     // CODELAB: Register service worker.
+    // CODELAB: Register service worker.
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/service-worker.js')
+            .then((reg) => {
+              console.log('Service worker registered.', reg);
+            });
+      });
+    }
   </script>
 
 </body>
